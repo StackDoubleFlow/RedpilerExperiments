@@ -21,13 +21,13 @@ pub enum NodeType {
     Wire,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub enum LinkType {
     Default,
     Side,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct Link {
     pub ty: LinkType,
     pub weight: u8,
