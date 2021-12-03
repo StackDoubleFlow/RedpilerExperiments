@@ -1,6 +1,5 @@
 use crate::node::{Node, NodeId, NodeType};
 
-
 fn walk_back(nodes: &[Node], start: NodeId) -> NodeId {
     let node = &nodes[start];
     if node.inputs.len() == 1 && nodes[node.inputs[0].to].updates.len() == 1 {

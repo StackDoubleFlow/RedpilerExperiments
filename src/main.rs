@@ -1,10 +1,11 @@
-mod node;
-mod group;
+mod codegen;
 mod constant_fold;
 mod dot_render;
+mod group;
+mod node;
 
-use node::Node;
 use anyhow::Result;
+use node::Node;
 use std::fs;
 
 fn main() -> Result<()> {
@@ -14,6 +15,8 @@ fn main() -> Result<()> {
 
     constant_fold::constant_fold(&mut nodes);
     group::group(&nodes);
+
+    codegen::gen(&nodes)?;
 
     dot_render::render(&nodes, "graph.dot")?;
 

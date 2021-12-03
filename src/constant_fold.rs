@@ -1,13 +1,18 @@
 use crate::node::{Node, NodeType};
 
-
 pub fn constant_fold(nodes: &mut [Node]) {
     let mut foldable = 0;
     loop {
         let old_foldable = foldable;
         'nodes: for i in 0..nodes.len() {
             let node = &nodes[i];
-            if matches!(node.ty, NodeType::Constant | NodeType::Lever | NodeType::StonePressurePlate | NodeType::StoneButton)  {
+            if matches!(
+                node.ty,
+                NodeType::Constant
+                    | NodeType::Lever
+                    | NodeType::StonePressurePlate
+                    | NodeType::StoneButton
+            ) {
                 continue;
             }
             for input in &node.inputs {
